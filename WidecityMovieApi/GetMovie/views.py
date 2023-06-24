@@ -9,7 +9,8 @@ from django.core import serializers
 # Create your views here.
 
 class title(APIView):
-    def get(self,request,title):
+    def get(self,request):
+        title = request.GET.get('title')
         APIKEY = 'a956febd'
         url = f'https://www.omdbapi.com/?i=tt3896198&apikey={APIKEY}&t={title}'
         
@@ -25,4 +26,4 @@ class title(APIView):
         # Create a JsonResponse object using the serialized_data
         json_response = JsonResponse(data, safe=False)
         return json_response
-    
+
